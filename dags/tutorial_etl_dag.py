@@ -24,6 +24,7 @@ This ETL DAG is demonstrating an Extract -> Transform -> Load pipeline
 # [START tutorial]
 # [START import_module]
 import json
+import datetime
 from textwrap import dedent
 
 import pendulum
@@ -45,7 +46,8 @@ with DAG(
     default_args={'retries': 2},
     # [END default_args]
     description='ETL DAG tutorial',
-    schedule_interval=None,
+#    schedule_interval=None,
+    schedule_interval=datetime.timedelta(days=1),
     start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
     catchup=False,
     tags=['example'],
